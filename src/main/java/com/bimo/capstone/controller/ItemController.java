@@ -3,6 +3,7 @@ package com.bimo.capstone.controller;
 import com.bimo.capstone.domain.StockItem;
 import com.bimo.capstone.repository.StockItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "https://epam-capstone.herokuapp.com/")
 @RequestMapping("/api/list")
 public class ItemController {
 
