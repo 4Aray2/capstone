@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "https://epam-capstone.herokuapp.com/")
 @RequestMapping("/api/list")
 public class ItemController {
 
