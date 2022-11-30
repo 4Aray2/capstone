@@ -11,14 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/list")
+@RequestMapping("/api")
 public class ItemController {
 
     @Autowired
     private StockItemRepository stockItemRepository;
 
-    @GetMapping("/all")
+    @GetMapping("/list/all")
     public List<StockItem> list() {
         return stockItemRepository.findAll();
     }
+
+    @GetMapping("/home")
+    public void home() {}
+
 }
