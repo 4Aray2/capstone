@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Customer")
@@ -16,30 +17,26 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "name cannot be empty")
     @Column(name = "customer_name")
     private String customerName;
 
-    @NotNull(message = "email cannot be empty")
-    @Column(unique = true)
-    private String email;
-
-    @NotNull(message = "phone number cannot be empty")
-    @Column(unique = true, name = "phone_number")
-    @Length(min = 10, message = "Password should be at least 10 number long")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    @NotNull(message = "username cannot be empty")
-    @Column(unique = true)
+    private String email;
     private String username;
-
-    @NotNull(message = "password cannot be empty")
-    @Length(min = 7, message = "Password should be at least 7 characters long")
     private String password;
 
-    @JsonManagedReference
+    @JsonManagedReference(value="customer-stocks")
     @OneToMany(mappedBy = "customer")
     private List<Stock> stocks;
+
+    @ManyToMany
+    @JoinTable(
+            name = "customer_role",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
     public Long getId() {
         return id;
@@ -95,5 +92,13 @@ public class Customer {
 
     public void setStocks(List<Stock> stocks) {
         this.stocks = stocks;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

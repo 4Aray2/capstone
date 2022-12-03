@@ -21,7 +21,7 @@ public class Item {
     @NotNull(message = "description cannot be empty")
     private String description;
 
-    @JsonManagedReference
+    @JsonManagedReference(value="item-itemInStocks")
     @OneToMany(mappedBy = "item")
     private List<StockItem> stocksContainingItem;
 

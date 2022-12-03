@@ -22,11 +22,11 @@ public class Stock {
     @NotNull(message = "address cannot be empty")
     private String address;
 
-    @JsonManagedReference
+    @JsonManagedReference(value="stock-itemInStocks")
     @OneToMany(mappedBy = "stock")
     private List<StockItem> itemsInStock;
 
-    @JsonBackReference
+    @JsonBackReference(value="customer-stocks")
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;

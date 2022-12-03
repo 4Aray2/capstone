@@ -20,12 +20,12 @@ public class StockItem {
     @Column(name = "item_location")
     private String location;
 
-    @JsonBackReference
+    @JsonBackReference(value="item-itemInStocks")
     @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @JsonBackReference
+    @JsonBackReference(value="stock-itemInStocks")
     @ManyToOne
     @JoinColumn(name = "stock_id")
     private Stock stock;
