@@ -31,7 +31,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Stock> stocks;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "customer_role",
             joinColumns = @JoinColumn(name = "customer_id"),

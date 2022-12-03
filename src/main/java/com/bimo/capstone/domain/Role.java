@@ -2,10 +2,7 @@ package com.bimo.capstone.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -17,7 +14,7 @@ public class Role implements GrantedAuthority {
     @Column(name = "role_name")
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
     private Set<Customer> customers;
 
 
