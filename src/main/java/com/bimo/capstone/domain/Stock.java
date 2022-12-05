@@ -13,7 +13,7 @@ public class Stock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @NotNull(message = "name cannot be empty")
     @Column(name = "stock_name")
@@ -31,11 +31,11 @@ public class Stock {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

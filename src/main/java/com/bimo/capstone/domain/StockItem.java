@@ -11,7 +11,7 @@ public class StockItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @NotNull(message = "quantity cannot be empty")
     private int quantity;
@@ -30,11 +30,11 @@ public class StockItem {
     @JoinColumn(name = "stock_id")
     private Stock stock;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

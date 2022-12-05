@@ -34,6 +34,7 @@ public class CustomerController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    //TODO ISOLATE CUSTOMER WITH DTO
     @PostMapping("/registration")
     public ResponseEntity<String> registerUser(@RequestBody Customer customer) {
         String errorMessage = customerService.getErrorMessage(customer);
@@ -57,7 +58,7 @@ public class CustomerController {
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public ResponseEntity<String> logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){

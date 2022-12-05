@@ -1,5 +1,6 @@
 package com.bimo.capstone.domain;
 
+import com.bimo.capstone.dto.ItemDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @NotNull(message = "name cannot be empty")
     @Column(name = "item_name")
@@ -25,11 +26,11 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<StockItem> stocksContainingItem;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

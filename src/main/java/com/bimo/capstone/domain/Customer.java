@@ -23,6 +23,7 @@ public class Customer {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+
     private String email;
     private String username;
     private String password;
