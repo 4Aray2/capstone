@@ -45,21 +45,24 @@ public class StockItemServiceImpl implements StockItemService {
     }
 
     @Override
-    public StockItemDTO findByStockIdAndItemId(StockItemDTO item) {
+    public List<StockItemDTO> findByStockIdAndItemId(StockItemDTO item) {
         Optional<Item> foundItem = itemRepository.findById(item.getItemId());
         Optional<Stock> foundStock = stockRepository.findById(item.getStockId());
         if (foundItem.isEmpty() || foundStock.isEmpty()) {
             return null;
         }
-        StockItem stockItem = stockItemRepository.findByStockAndItem(foundStock.get(), foundItem.get());
-        if (stockItem == null) {
+        List<StockItem> stockItems = stockItemRepository.findByStockAndItem(foundStock.get(), foundItem.get());
+        if (stockItems == null || stockItems.isEmpty()) {
             return null;
         }
-        return new StockItemDTO(stockItem.getId(),
-                stockItem.getQuantity(),
-                stockItem.getLocation(),
-                stockItem.getStock().getId(),
-                stockItem.getItem().getId());
+        return stockItems.stream()
+                .map(t -> new StockItemDTO(
+                        t.getId(),
+                        t.getQuantity(),
+                        t.getLocation(),
+                        t.getItem().getId(),
+                        t.getStock().getId()
+                )).collect(Collectors.toList());
     }
 
     @Override

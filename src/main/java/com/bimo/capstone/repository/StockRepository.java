@@ -11,9 +11,9 @@ import java.util.List;
 
 public interface StockRepository extends JpaRepository<Stock, Integer> {
 
-    Stock findByName(String name);
+    List<Stock> findByName(String name);
 
-    @Query(value = "SELECT s.stock_name, s.address " +
+    @Query(value = "SELECT s.id, s.stock_name, s.address " +
             "FROM item i " +
             "INNER JOIN stock_item si ON i.id = si.item_id " +
             "INNER JOIN stock s ON s.id = si.stock_id " +

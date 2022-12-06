@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProductDetailsController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class ProductDetailsController {
     }
 
     @GetMapping("/products-details")
-    public StockItemDTO findByStockIdAndItemId(@RequestBody StockItemDTO item) {
+    public List<StockItemDTO> findByStockIdAndItemId(@RequestBody StockItemDTO item) {
         return stockItemService.findByStockIdAndItemId(item);
     }
 

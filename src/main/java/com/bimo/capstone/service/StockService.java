@@ -7,7 +7,7 @@ import java.util.List;
 public interface StockService {
     List<StockDTO> findAllCustomerStocks();
 
-    StockDTO findByName(String name);
+    List<StockDTO> findByName(String name);
 
     void addStock(StockDTO stock);
 

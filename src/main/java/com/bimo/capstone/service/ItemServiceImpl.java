@@ -48,7 +48,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public ItemDTO findByName(String name) {
         Item item = itemRepository.findByName(name);
-        return new ItemDTO((int) item.getId(),
+        return new ItemDTO(item.getId(),
                 item.getName(),
                 item.getDescription());
     }

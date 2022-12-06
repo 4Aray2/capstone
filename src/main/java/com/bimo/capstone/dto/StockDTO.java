@@ -1,12 +1,26 @@
 package com.bimo.capstone.dto;
 
 public class StockDTO {
+    private int id;
     private String name;
     private String address;
 
-    public StockDTO(String name, String address) {
+    public StockDTO() {
+
+    }
+
+    public StockDTO(Integer id, String name, String address) {
+        this.id = id;
         this.name = name;
         this.address = address;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
