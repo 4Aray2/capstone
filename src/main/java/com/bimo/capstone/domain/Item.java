@@ -1,6 +1,5 @@
 package com.bimo.capstone.domain;
 
-import com.bimo.capstone.dto.ItemDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
